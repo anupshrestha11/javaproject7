@@ -11,33 +11,45 @@
 <html>
 <head>
     <title>Todo List</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <%
     HttpSession httpSession = request.getSession();
+    httpSession.getAttribute("todos");
 
-    if (httpSession.getAttribute("LoggedIn")==null){
+    if (httpSession.getAttribute("Name")==null){
         request.getRequestDispatcher("/login.jsp").forward(request,response);
     }
 %>
-<table>
+<div class="container">
+<h2>Your Todo LIst</h2>
+<table class="table table-striped">
+    <caption><h3>Todo List</h3></caption>
     <thead>
     <th>S.N.</th>
     <th>Todo</th>
     <th>Is Done?</th>
-    <th>Created Date</th>
+    <th>Target Date</th>
+    <th></th>
+    <th></th>
     </thead>
     <tbody>
-    <c:forEach items="${requestScope.todos}" var="todo" varStatus="i">
+    <c:forEach items="${todos}" var="todo" varStatus="i">
         <tr>
             <td><c:out value="${i.index+1}"></c:out> </td>
-            <td><c:out value="${todo.name}"></c:out> </td>
+            <td><c:out value="${todo.desc}"></c:out> </td>
             <td><c:out value="${todo.done}"></c:out> </td>
-            <td><c:out value="${todo.date}"></c:out> </td>
+            <td><c:out value="${todo.targetDate}"></c:out> </td>
+            <td><a type="button" class="btn btn-success" value="Update" href="UpdateTodo?id=${todo.id}">Update</a></td>
+            <td><a type="button" class="btn btn-warning" value="Delete" href="DeleteTodo?id=${todo.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
+<a href="/addTodo.jsp" class="button">Add Todo</a>
+</div>
 </body>
 </html>

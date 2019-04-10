@@ -24,7 +24,7 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
-  
+
   <servlet>
     <servlet-name>Logout</servlet-name>
     <servlet-class>Controller.LogoutServlet</servlet-class>
@@ -33,4 +33,36 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddTodo</servlet-name>
+    <servlet-class>Controller.AddTodoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowTodo</servlet-name>
+    <servlet-class>Controller.ShowTodoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowTodo</servlet-name>
+    <url-pattern>/ShowTodo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddTodo</servlet-name>
+    <url-pattern>/AddTodo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteTodo</servlet-name>
+    <servlet-class>Controller.DeleteTodoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteTodo</servlet-name>
+    <url-pattern>/DeleteTodo</url-pattern>
+  </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateTodo</servlet-name>
+        <servlet-class>Controller.UpdateTodoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateTodo</servlet-name>
+        <url-pattern>/UpdateTodo</url-pattern>
+    </servlet-mapping>
 </web-app>

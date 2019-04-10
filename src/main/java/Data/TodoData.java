@@ -3,17 +3,26 @@ package Data;
 import java.util.Date;
 
 public class TodoData {
+    private int id;
     private String desc;
-    private boolean isDone;
-    private Date date;
+    private boolean Done;
+    private Date targetDate ;
 
     public TodoData() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public TodoData(String desc, boolean isDone, Date date) {
         this.desc = desc;
-        this.isDone = isDone;
-        this.date = date;
+        this.Done = isDone;
+        this.targetDate = date;
     }
 
     public String getDesc() {
@@ -24,19 +33,19 @@ public class TodoData {
         this.desc = desc;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public boolean getDone() {
+        return Done;
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.Done = done;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getTargetDate() {
+        return targetDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTargetDate(Date date) {
+        this.targetDate = date;
     }
 }
