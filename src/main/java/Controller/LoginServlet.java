@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class LoginServlet extends HttpServlet {
@@ -34,6 +35,14 @@ public class LoginServlet extends HttpServlet {
         else {
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
+    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession httpSession = req.getSession(true);
+
+        httpSession.invalidate();
+
+        req.getRequestDispatcher("/login.jsp").forward(req,resp);
     }
 
 

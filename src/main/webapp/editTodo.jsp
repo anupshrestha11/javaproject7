@@ -25,6 +25,8 @@
     httpSession.getAttribute("tododata");
 %>
 <div class="container">
+    <a href="/welcome.jsp" class="left-arrow-button">Home Page</a>
+    <a href="ShowTodo" class="right-arrow-button">Show Todo</a>
 <form action="UpdateTodo?id=<c:out value="${tododata.id}"></c:out>" method="post">
     <input type="text" name="desc" placeholder="Enter Description" class="form-control" value="<c:out value="${tododata.desc}"></c:out>" /><br/>
     <div class="radio">

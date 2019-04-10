@@ -28,6 +28,7 @@
 
 
 <div class="container">
+    <a href="/welcome.jsp" class="left-arrow-button">Home Page</a>
 <h2>Your Todo LIst</h2>
 <table class="table table-striped">
     <caption><h3>Todo List</h3></caption>

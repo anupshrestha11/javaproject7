@@ -21,6 +21,8 @@
     }
 %>
 <div class="container">
+    <a href="/welcome.jsp" class="left-arrow-button">Home Page</a>
+    <a href="ShowTodo" class="right-arrow-button">Show Todo</a>
 <form action="AddTodo" method="post">
     <br><br>
     <input type="text" name="desc" width="300px" placeholder="Description" class="form-control"><br>
