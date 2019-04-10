@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>Edit Todo</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <%
@@ -22,16 +24,19 @@
     }
     httpSession.getAttribute("tododata");
 %>
-
+<div class="container">
 <form action="UpdateTodo?id=<c:out value="${tododata.id}"></c:out>" method="post">
-    <input type="text" name="desc" placeholder="Enter Description" value="<c:out value="${tododata.desc}"></c:out>" /><br/><br/>
-
-    <input type="radio" name="isdone"   value="true"  <c:if test="${tododata.done == true }"> checked </c:if> />Done <br />
-    <input type="radio" name="isdone"   value="false"  <c:if test="${tododata.done == false}" > checked </c:if> />Not-Done <br />
-
-    <input type="date" name="targetdate" value="<c:out value="${tododata.targetDate}"></c:out>" /><br/>
-    <input type="submit">
+    <input type="text" name="desc" placeholder="Enter Description" class="form-control" value="<c:out value="${tododata.desc}"></c:out>" /><br/>
+    <div class="radio">
+        <input type="radio" name="isdone"   value="true"  <c:if test="${tododata.done == true }"> checked </c:if> />Done <br />
+    </div>
+    <div class="radio">
+        <input type="radio" name="isdone"   value="false"  <c:if test="${tododata.done == false}" > checked </c:if> />Not-Done <br />
+    </div>
+    <input type="date" name="targetdate" class="form-control" value="<c:out value="${tododata.targetDate}"></c:out>" /><br/>
+    <input type="submit" class="btn btn-success">
 </form>
+</div>
 
 </body>
 </html>

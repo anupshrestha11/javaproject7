@@ -17,12 +17,16 @@
 <body>
 <%
     HttpSession httpSession = request.getSession();
-    httpSession.getAttribute("todos");
 
     if (httpSession.getAttribute("Name")==null){
         request.getRequestDispatcher("/login.jsp").forward(request,response);
     }
+    httpSession.getAttribute("todos");
+
+
 %>
+
+
 <div class="container">
 <h2>Your Todo LIst</h2>
 <table class="table table-striped">
@@ -32,6 +36,7 @@
     <th>Todo</th>
     <th>Is Done?</th>
     <th>Target Date</th>
+    <th>Days Left</th>
     <th></th>
     <th></th>
     </thead>
@@ -42,6 +47,7 @@
             <td><c:out value="${todo.desc}"></c:out> </td>
             <td><c:out value="${todo.done}"></c:out> </td>
             <td><c:out value="${todo.targetDate}"></c:out> </td>
+            <td><c:out value="${todo.days}"></c:out></td>
             <td><a type="button" class="btn btn-success" value="Update" href="UpdateTodo?id=${todo.id}">Update</a></td>
             <td><a type="button" class="btn btn-warning" value="Delete" href="DeleteTodo?id=${todo.id}">Delete</a></td>
         </tr>

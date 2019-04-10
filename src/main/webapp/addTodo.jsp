@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <%
@@ -18,11 +20,13 @@
         request.getRequestDispatcher("/login.jsp").forward(request,response);
     }
 %>
+<div class="container">
 <form action="AddTodo" method="post">
-    <input type="text" name="desc" width="300px" placeholder="Description">
-    <input type="date" name="targetDate" placeholder="TargetDate" DATAFORMATAS="yyyy/mm/dd" id="">
-    <input type="submit" value="Submit">
+    <br><br>
+    <input type="text" name="desc" width="300px" placeholder="Description" class="form-control"><br>
+    <input type="date" name="targetDate" placeholder="TargetDate" class="form-control"><br>
+    <input type="submit" value="Submit" class="btn btn-success">
 </form>
-
+</div>
 </body>
 </html>

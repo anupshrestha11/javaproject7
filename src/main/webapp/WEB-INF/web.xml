@@ -35,11 +35,11 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>AddTodo</servlet-name>
-    <servlet-class>Controller.AddTodoServlet</servlet-class>
+    <servlet-class>Controller.TodoServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ShowTodo</servlet-name>
-    <servlet-class>Controller.ShowTodoServlet</servlet-class>
+    <servlet-class>Controller.TodoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowTodo</servlet-name>
