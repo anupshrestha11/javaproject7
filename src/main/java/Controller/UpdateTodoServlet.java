@@ -22,7 +22,7 @@ public class UpdateTodoServlet extends HttpServlet {
         todoData.setId(Integer.parseInt(req.getParameter("id")));
 
         try {
-            req.setAttribute("tododata",new TodoService().retiveTodo(todoData));
+            req.getSession().setAttribute("tododata",new TodoService().retiveTodo(todoData));
 
         }
         catch (SQLException e){

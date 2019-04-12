@@ -59,7 +59,7 @@ public class TodoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TodoService todoService = new TodoService();
         UserData userData = new UserData();
-        HttpSession httpSession = req.getSession();
+        HttpSession httpSession = req.getSession(true);
         if (httpSession.getAttribute("Username")==null){
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
@@ -69,7 +69,7 @@ public class TodoServlet extends HttpServlet {
         userData.setUsername(username);
         userData.setEmail(email);
         try{
-            req.setAttribute("todos",todoService.retive(userData));
+            req.getSession().setAttribute("todos",todoService.retive(userData));
         }
         catch (SQLException e){
             e.printStackTrace();
