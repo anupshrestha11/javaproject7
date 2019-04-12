@@ -32,6 +32,7 @@
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
+
   </servlet-mapping>
   <servlet>
     <servlet-name>AddTodo</servlet-name>

@@ -16,7 +16,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserData userData = new UserData(req.getParameter("user"),req.getParameter("password"));
+        UserData userData = new UserData();
+        userData.setUsername(req.getParameter("user"));
+        userData.setEmail(req.getParameter("user"));
+        userData.setPassword(req.getParameter("password"));
         UserService userService = new UserService();
         boolean check = false;
         try {
@@ -30,19 +33,19 @@ public class LoginServlet extends HttpServlet {
             httpSession.setAttribute("Name",userData.getName());
             httpSession.setAttribute("Username",userData.getUsername());
             httpSession.setAttribute("email",userData.getEmail());
-            req.getRequestDispatcher("/welcome.jsp").forward(req,resp);
+            resp.sendRedirect("/welcome.jsp");
         }
         else {
-            req.getRequestDispatcher("/login.jsp").forward(req,resp);
+            req.getSession().setAttribute("loginMessage","Username/Email or Password Wrong");
+            resp.sendRedirect("/login.jsp");
         }
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession httpSession = req.getSession(true);
+        req.getSession().invalidate();
 
-        httpSession.invalidate();
 
-        req.getRequestDispatcher("/login.jsp").forward(req,resp);
+        resp.sendRedirect("/login.jsp");
     }
 
 

@@ -9,16 +9,29 @@
 <html>
 <head>
     <title>Login Page</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-
-<form action="Login" method="post">
-    <h3>Login Page</h3><br/>
-    <input type="text" name="user" placeholder="Username/Email" required />
-    <input type="password" name="password" placeholder="Password" required />
-    <input type="submit">
+<%
+    request.getSession().getAttribute("loginMessage");
+%>
+<div class="container">
+<form action="Login" method="post" class = "log">
+    <h3>Login Page</h3>
+    <b class="text-danger"> ${loginMessage}</b> <br/>
+    <div class="form-group">
+        <input type="text" name="user" placeholder="Username/Email" required />
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" placeholder="Password" required />
+    </div>
+    <input type="submit" class="btn btn-success" value="Login">
 </form>
 
+<br>
+<a href="/register.jsp" class="btn btn-default">Create Account</a>.
+</div>
 
 </body>
 </html>

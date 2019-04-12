@@ -22,6 +22,15 @@ public class RegisterServlet extends HttpServlet {
         String email = req.getParameter("email");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String repassword = req.getParameter("repassword");
+        System.out.println(password);
+        System.out.println(repassword);
+
+        if (!password.equals(repassword))
+        {
+            req.setAttribute("message","Password Don't Match");
+            req.getRequestDispatcher("/register.jsp").forward(req,resp);
+        }
 
         userData.setName(name);
         userData.setEmail(email);

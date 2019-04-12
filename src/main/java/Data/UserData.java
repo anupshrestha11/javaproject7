@@ -1,8 +1,11 @@
 package Data;
 
+import Encoder.PasswordEncoder;
+
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
-public class UserData {
+public class UserData extends PasswordEncoder {
     private String username;
     private String name;
     private String password;
@@ -19,12 +22,6 @@ public class UserData {
 
     public UserData(){
 
-    }
-
-    public UserData(String user, String password) {
-        this.username = user;
-        this.email = user;
-        this.password = password;
     }
 
     public String getUsername() {
@@ -48,7 +45,12 @@ public class UserData {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        try {
+            this.password = sha512PasswordEncoder(password);
+        }
+        catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
     }
 
     public String getEmail() {

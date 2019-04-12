@@ -15,9 +15,10 @@
 <body>
 <%
     HttpSession httpSession = request.getSession();
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate,no-reload");
 
     if (httpSession.getAttribute("Name")==null){
-        request.getRequestDispatcher("/login.jsp").forward(request,response);
+        response.sendRedirect("/login.jsp");
     }
 %>
 <div class="container">

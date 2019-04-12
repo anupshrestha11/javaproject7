@@ -9,23 +9,27 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <%
     HttpSession httpSession = request.getSession();
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate,no-reload");
 
     if (httpSession.getAttribute("Name")==null){
-        request.getRequestDispatcher("/login.jsp").forward(request,response);
+        response.sendRedirect("/login.jsp");
     }
 %>
-Welcome ${Name}
+<div class="container">
 
-<form action="Logout" method="get">
-    <input type="submit" value="Logout" />
-</form>
 
-<a href="/addTodo.jsp">add todo</a>
-<a href="ShowTodo">Show todo</a>
-
+    <form action="Logout" method="get">
+        <h4>Welcome ${Name}</h4>
+        <a href="/addTodo.jsp" class="btn btn-group">Add Todo</a>
+        <a href="ShowTodo" class="btn btn-group" >Show Todo</a> <br><br>
+        <input type="submit" value="Logout" class="btn btn-warning"/>
+    </form>
+</div>
 </body>
 </html>
