@@ -66,4 +66,25 @@
         <servlet-name>UpdateTodo</servlet-name>
         <url-pattern>/UpdateTodo</url-pattern>
     </servlet-mapping>
+  <servlet>
+    <servlet-name>ForgotPassword</servlet-name>
+    <servlet-class>Controller.ForgetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPassword</servlet-name>
+    <url-pattern>/ForgotPassword</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ForgotPassword</servlet-name>
+    <url-pattern>/EmailCode</url-pattern>
+    <!--ECFP=Email Code Forgot Password-->
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ResetPassword</servlet-name>
+    <servlet-class>Controller.ResetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetPassword</servlet-name>
+    <url-pattern>/ResetPassword</url-pattern>
+  </servlet-mapping>
 </web-app>

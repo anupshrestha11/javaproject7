@@ -84,5 +84,40 @@ public class UserService {
 
         return false;
     }
+    public String checkUser(String user) throws SQLException{
+        String query = "SELECT * FROM users WHERE username = ? OR email = ?";
+        String email = null;
+
+        Connection connection = connectDb.getConnection();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1,user);
+        preparedStatement.setString(2,user);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            email = resultSet.getString("email");
+        }
+        return email;
+
+    }
+
+    public void resetPwd(String email,String pwd) throws SQLException{
+        String query = "UPDATE users SET password = ? where email = ?";
+
+        UserData userData = new UserData();
+        userData.setPassword(pwd);
+
+        Connection connection = connectDb.getConnection();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1,userData.getPassword());
+        preparedStatement.setString(2,email);
+        preparedStatement.execute();
+
+        System.out.println("Password Reseted");
+
+    }
 
 }

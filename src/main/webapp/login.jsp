@@ -27,6 +27,7 @@
         <input type="password" name="password" placeholder="Password" required />
     </div>
     <input type="submit" class="btn btn-success" value="Login">
+    <a href="forgotPassword.jsp" class="btn btn-link">Forgot Password</a>
 </form>
 
 <br>
