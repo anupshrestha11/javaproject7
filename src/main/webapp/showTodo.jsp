@@ -1,63 +1,58 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Anup
-  Date: 4/7/2019
-  Time: 7:23 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Todo List</title>
-    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
+<%@include file="header.jsp" %>
+<%@include file="session.jsp" %>
 <%
-    HttpSession httpSession = request.getSession();
-    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate,no-reload");
-
-    if (httpSession.getAttribute("Name")==null){
-        response.sendRedirect("/login.jsp");
-    }
     httpSession.getAttribute("todos");
-
-
 %>
 
-
 <div class="container">
-    <a href="/welcome.jsp" class="left-arrow-button">Home Page</a>
-<h2>Your Todo LIst</h2>
-<table class="table table-striped">
-    <caption><h3>Todo List</h3></caption>
-    <thead>
-    <th>S.N.</th>
-    <th>Todo</th>
-    <th>Is Done?</th>
-    <th>Target Date</th>
-    <th>Days Left</th>
-    <th></th>
-    <th></th>
-    </thead>
-    <tbody>
-    <c:forEach items="${todos}" var="todo" varStatus="i">
-        <tr>
-            <td><c:out value="${i.index+1}"></c:out> </td>
-            <td><c:out value="${todo.desc}"></c:out> </td>
-            <td><c:out value="${todo.done}"></c:out> </td>
-            <td><c:out value="${todo.targetDate}"></c:out> </td>
-            <td><c:out value="${todo.days}"></c:out></td>
-            <td><a type="button" class="btn btn-success" value="Update" href="UpdateTodo?id=${todo.id}">Update</a></td>
-            <td><a type="button" class="btn btn-warning" value="Delete" href="DeleteTodo?id=${todo.id}">Delete</a></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+    <div class="row">
+        <div class="col">
+            <%@include file="element.jsp" %>
+        </div>
+    </div>
 
-<a href="/addTodo.jsp" class="button">Add Todo</a>
+    <%@include file="addTodo.jsp" %>
+    <caption><h3>Todo List</h3></caption>
+
+    <table class="table table-striped">
+        <thead>
+        <th>S.N.</th>
+        <th>Todo</th>
+        <th>Is Done?</th>
+        <th>Target Date</th>
+        <th>Days Left</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        </thead>
+        <tbody>
+        <c:forEach items="${todos}" var="todo" varStatus="i">
+
+            <tr
+                    <c:if test="${todo.done==false && todo.days le 0}"> class="bg-danger "</c:if>
+                    <c:if test="${todo.done==false && todo.days le 10}"> class="bg-warning "</c:if>
+            >
+                <td><c:out value="${i.index+1}"></c:out></td>
+                <td><c:out value="${todo.desc}"></c:out></td>
+                <td><c:out value="${todo.done}"></c:out></td>
+                <td><c:out value="${todo.targetDate}"></c:out></td>
+                <td><c:out value="${todo.days}"></c:out></td>
+                <td>
+                    <a href="IsDone?id=${todo.id}&isDone=true" type="button" class="btn btn-success">Done</a>
+                    <a href="IsDone?id=${todo.id}&isDone=false" type="button" class="btn btn-success">Not-Done</a>
+                </td>
+                <td><a type="button" class="btn btn-outline-warning font-weight-bold" value="Update"
+                       href="UpdateTodo?id=${todo.id}">Edit</a>
+                </td>
+                <td><a type="button" class="btn btn-outline-danger font-weight-bold" value="Delete"
+                       href="DeleteTodo?id=${todo.id}">Delete</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <a href="DeleteAllTodo" class="btn btn-outline-danger">Delete All Todo</a>
+
 </div>
 </body>
 </html>

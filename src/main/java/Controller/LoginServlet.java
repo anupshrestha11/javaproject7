@@ -24,22 +24,22 @@ public class LoginServlet extends HttpServlet {
         boolean check = false;
         try {
             check = userService.retrive(userData);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        if (check){
+        if (check) {
             HttpSession httpSession = req.getSession(true);
-            httpSession.setAttribute("Name",userData.getName());
-            httpSession.setAttribute("Username",userData.getUsername());
-            httpSession.setAttribute("email",userData.getEmail());
-            resp.sendRedirect("/welcome.jsp");
-        }
-        else {
-            req.getSession().setAttribute("loginMessage","Username/Email or Password Wrong");
+            httpSession.setAttribute("Name", userData.getName());
+            httpSession.setAttribute("Username", userData.getUsername());
+            httpSession.setAttribute("email", userData.getEmail());
+            httpSession.setAttribute("userid",userData.getId());
+            resp.sendRedirect("ShowTodo");
+        } else {
+            req.getSession().setAttribute("loginMessage", "Username/Email or Password Wrong");
             resp.sendRedirect("/login.jsp");
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();

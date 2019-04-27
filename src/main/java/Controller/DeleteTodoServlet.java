@@ -14,16 +14,33 @@ public class DeleteTodoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TodoData todoData = new TodoData();
-        TodoService todoService =  new TodoService();
+        TodoService todoService = new TodoService();
 
-        todoData.setId(Integer.parseInt(req.getParameter("id")));
+        String path = req.getServletPath();
 
-        try {
-            todoService.delete(todoData);
+        System.out.println(path);
+
+        if (path.equals("/DeleteTodo")) {
+
+            todoData.setId(Integer.parseInt(req.getParameter("id")));
+
+            try {
+                todoService.delete(todoData);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
-        catch (SQLException e){
-            e.printStackTrace();
+
+        else {
+            try {
+                todoService.deleteAll(Integer.parseInt(req.getSession().getAttribute("userid").toString()));
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
         }
         resp.sendRedirect("ShowTodo");
     }
+
 }

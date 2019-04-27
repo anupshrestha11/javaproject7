@@ -1,52 +1,41 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Anup
-  Date: 4/3/2019
-  Time: 4:07 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Registration Form</title>
-    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
+<%@include file="header.jsp" %>
 <%
     request.getSession().getAttribute("message");
 %>
 <div class="container">
 
-<h1 font-color="red">Registration Page</h1>
-<form action="UserRegister" method="post">
-
-    <b class="text-warning"> ${message}</b> <br/><br/>
-    <div class="form-group">
-    <input type="text" name="name" placeholder="Name" class="box" required /><br/><br/>
-    </div>
-    <div class="form-group">
-    <input type="email" name="email" placeholder="Email" class="box" required /><br/><br/>
-    </div>
-    <div class="form-group">
-    <input type="text" name="username" placeholder="Username" class="box" required /><br/><br/>
-    </div>
-    <div class="form-group">
-    <input type="password" name="password" placeholder="Password" class="box" required minlength="6" /><br/><br/>
-    </div>
-    <div class="form-group">
-    <input type="password" name="repassword" placeholder="Re-Password" class="box" required min="6" /><br/><br/>
-    </div>
-
-
-    <input type="submit" value="Submit" class="btn btn-success"/>
     <br>
-    <br>
-    Already have account <a href="/login.jsp" class="btn btn-default">Login</a>
+    <h1 font-color="red">Registration Page</h1>
+    <form action="UserRegister" method="post">
 
-
-
-</form>
+        <b class="text-warning"> ${message}</b> <br/><br/>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Enter Full Name" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter Email Address" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter Username" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter Password" class="form-control" required
+                   minlength="6"/>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" name="repassword" placeholder="Retype-Password" class="form-control" required
+                   minlength="6"/>
+        </div>
+        <input type="submit" value="Register" class="btn btn-success"/> &nbsp &nbsp
+        <input type="reset" value="Reset Form" class="btn btn-warning"/>
+    </form>
+    <br><br>
+    Already have account? &nbsp;&nbsp; <a href="/login.jsp" class="btn btn-outline-primary">Login</a>
 </div>
 </body>
 </html>

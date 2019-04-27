@@ -10,16 +10,13 @@ public class ConnectDb {
     private static final String hostName = "localhost:3306";
     private static final String databasename = "javaproject7";
 
-    public Connection getConnection() throws SQLException
-    {
+    public Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-        }
-        catch (ClassNotFoundException c)
-        {
+        } catch (ClassNotFoundException c) {
             c.printStackTrace();
         }
-        Connection connection= DriverManager.getConnection("jdbc:mysql://"+hostName+"/"+databasename,username,password);
+        Connection connection = DriverManager.getConnection("jdbc:mysql://" + hostName + "/" + databasename, username, password);
 
         System.out.println("Database Connection Sucessful");
         return connection;

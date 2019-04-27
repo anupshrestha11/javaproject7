@@ -12,14 +12,22 @@ public class TodoData {
     private int id;
     private String desc;
     private boolean Done;
-    private Date targetDate ;
+    private Date targetDate;
     private int days;
+    private int limit = 10;
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
 
     public int getDays() {
         try {
             days = Days.daysBetween(new LocalDate(new SimpleDateFormat("yyyy-MM-dd").parse(getCurrentDate()).getTime()), new LocalDate(this.targetDate.getTime())).getDays();
-        }
-        catch (ParseException p){
+        } catch (ParseException p) {
             p.printStackTrace();
         }
         return days;

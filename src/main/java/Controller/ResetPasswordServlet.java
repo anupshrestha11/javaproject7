@@ -18,16 +18,15 @@ public class ResetPasswordServlet extends HttpServlet {
         String newPassword = req.getParameter("newpwd");
         String reNewPassword = req.getParameter("renewpwd");
 
-        if (!newPassword.equals(reNewPassword)){
-            req.getSession().setAttribute("rMessage","Password Doesn't Match");
-            req.getRequestDispatcher("resetPassword").forward(req,resp);
+        if (!newPassword.equals(reNewPassword)) {
+            req.getSession().setAttribute("rMessage", "Password Doesn't Match");
+            req.getRequestDispatcher("resetPassword").forward(req, resp);
         }
 
         UserService userService = new UserService();
         try {
-            userService.resetPwd(email,newPassword);
-        }
-        catch (SQLException e){
+            userService.resetPwd(email, newPassword);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         req.getSession().invalidate();

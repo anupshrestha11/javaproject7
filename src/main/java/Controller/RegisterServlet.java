@@ -23,13 +23,10 @@ public class RegisterServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String repassword = req.getParameter("repassword");
-        System.out.println(password);
-        System.out.println(repassword);
 
-        if (!password.equals(repassword))
-        {
-            req.setAttribute("message","Password Don't Match");
-            req.getRequestDispatcher("/register.jsp").forward(req,resp);
+        if (!password.equals(repassword)) {
+            req.setAttribute("message", "Password Don't Match");
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
         }
 
         userData.setName(name);
@@ -38,21 +35,18 @@ public class RegisterServlet extends HttpServlet {
         userData.setPassword(password);
 
 
-
         try {
-            if (userService.check(userData)){
-                req.getRequestDispatcher("/register.jsp").forward(req,resp);
+            if (userService.check(userData)) {
+                req.getRequestDispatcher("/register.jsp").forward(req, resp);
 
-                req.getSession().setAttribute("message" , "username or email already used");
-            }
-            else {
+                req.getSession().setAttribute("message", "username or email already used");
+            } else {
                 userService.save(userData);
             }
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        req.getRequestDispatcher("/login.jsp").forward(req,resp);
+        req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 }

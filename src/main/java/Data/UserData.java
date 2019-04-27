@@ -20,7 +20,7 @@ public class UserData extends PasswordEncoder {
         this.id = id;
     }
 
-    public UserData(){
+    public UserData() {
 
     }
 
@@ -47,8 +47,7 @@ public class UserData extends PasswordEncoder {
     public void setPassword(String password) {
         try {
             this.password = sha512PasswordEncoder(password);
-        }
-        catch (NoSuchAlgorithmException e){
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
     }

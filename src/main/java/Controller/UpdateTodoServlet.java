@@ -22,13 +22,12 @@ public class UpdateTodoServlet extends HttpServlet {
         todoData.setId(Integer.parseInt(req.getParameter("id")));
 
         try {
-            req.getSession().setAttribute("tododata",new TodoService().retiveTodo(todoData));
+            req.getSession().setAttribute("tododata", new TodoService().retiveTodo(todoData));
 
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        req.getRequestDispatcher("/editTodo.jsp?id=todoData.getId();").forward(req,resp);
+        req.getRequestDispatcher("/editTodo.jsp?id=todoData.getId();").forward(req, resp);
     }
 
     @Override
@@ -42,14 +41,12 @@ public class UpdateTodoServlet extends HttpServlet {
         try {
 
             todoData.setTargetDate(new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("targetdate")));
-        }
-        catch (ParseException p){
+        } catch (ParseException p) {
             p.printStackTrace();
         }
         try {
             todoService.update(todoData);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         resp.sendRedirect("ShowTodo");
