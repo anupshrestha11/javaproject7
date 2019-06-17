@@ -30,13 +30,10 @@ public class DeleteTodoServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-        }
-
-        else {
+        } else {
             try {
                 todoService.deleteAll(Integer.parseInt(req.getSession().getAttribute("userid").toString()));
-            }
-            catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

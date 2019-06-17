@@ -12,32 +12,9 @@ import java.util.List;
 public class TodoService {
     ConnectDb connectDb = new ConnectDb();
 
-//    public int getID(UserData userData) throws SQLException {
-//        String query = "SELECT id FROM users WHERE email=? and username=?";
-//
-//        Connection connection = connectDb.getConnection();
-//
-//        PreparedStatement preparedStatement = connection.prepareStatement(query);
-//        preparedStatement.setString(1, userData.getEmail());
-//        preparedStatement.setString(2, userData.getUsername());
-//
-//        ResultSet resultSet = preparedStatement.executeQuery();
-//
-//        if (resultSet.next()) {
-//            int id = resultSet.getInt("id");
-//            return id;
-//        }
-//        return 0;
-//    }
-
     public void save(TodoData todoData, UserData userData) throws SQLException {
 
         Connection connection = connectDb.getConnection();
-//        System.out.println(todoData.getDesc());
-//        System.out.println(todoData.getTargetDate());
-//        System.out.println(userData.getId());
-
-
         String todoQuery = "INSERT INTO todos (description,isdone,userid,targetdate)VALUES(?,?,?,?)";
 
         PreparedStatement preparedStatement1 = connection.prepareStatement(todoQuery);
